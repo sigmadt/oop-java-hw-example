@@ -11,26 +11,44 @@
  * 4) Опционально: добавить геттеры/сеттеры, если нужно.
  */
 public class Enemy {
-    // private String name;
-    // private int health;
-    // private int attackPower;
+     private String name;
+     private int health;
+     private int attackPower;
 
-    // public Enemy(String name, int health, int attackPower) {
-    //     // TODO: Инициализировать поля
-    // }
+     public Enemy(String name, int health, int attackPower) {
+         this.name = name;
+         this.health = health;
+         this.attackPower = attackPower;
+     }
 
-    // public void attack(Player player) {
-    //     // TODO: Логика нанесения урона игроку
-    // }
+     public void attack(Player player) {
+         System.out.println(name + " атаковал " + player.getName() + " и снял " + attackPower + " жизней!");
+         player.takeDamage(attackPower);
+     }
 
-    // public void takeDamage(int damage) {
-    //     // TODO: Логика уменьшения здоровья
-    // }
+    public void takeDamage(int damage) {
+        health -= damage;
+        if (health < 0) {
+            health = 0;
+        }
+        System.out.println(name + " получил " + damage + " урона. (HP: " + health + ")");
+    }
 
-    // public boolean isAlive() {
-    //     // TODO: Вернуть true, если здоровье врага больше 0
-    //     // return false; // заглушка
-    // }
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
 
     // Optional: добавить любые другие методы, если требуется (например, getName(), getHealth(), и т.д.)
 }
